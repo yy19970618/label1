@@ -1,6 +1,4 @@
 package he;
-//one change
-//tow change
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
