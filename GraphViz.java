@@ -1,6 +1,7 @@
 package he;
 //one change
 //tow change
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -47,8 +48,7 @@ import java.util.Properties;
  * @version v0.1, 2003/12/04 (December) -- first release
  * @author  Laszlo Szathmary (<a href="jabba.laci@gmail.com">jabba.laci@gmail.com</a>)
  */
-public class GraphViz
-{
+public class GraphViz{
     /**
      * Detects the client's operating system.
      */
@@ -62,14 +62,16 @@ public class GraphViz
         private final static long serialVersionUID = 1L; {
             try {
                 load(new FileInputStream(cfgProp));
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            	e.printStackTrace();
+            }
         }
     };
 
     /**
      * The dir. where temporary files will be created.
      */
-  private static String TEMP_DIR = "G://";
+  private static String TEMP_DIR = "C:\\";
 
     /**
      * Where is your dot program located? It will be called externally.
@@ -82,79 +84,79 @@ public class GraphViz
      * 
      * dpi patch by Peter Mueller
      */
-    private int[] dpiSizes = {46, 51, 57, 63, 70, 78, 86, 96, 106, 116, 128, 141, 155, 170, 187, 206, 226, 249};
+  private int[] dpiSizes = {46, 51, 57, 63, 70, 78, 86, 96, 106, 116, 128, 141, 155, 170, 187, 206, 226, 249};
 
     /**
      * Define the index in the image size array.
      */
-    private int currentDpiPos = 7;
+  private int currentDpiPos = 7;
 
     /**
      * Increase the image size (dpi).
      */
-    public void increaseDpi() {
-        if ( this.currentDpiPos < (this.dpiSizes.length - 1) ) {
-            ++this.currentDpiPos;
-        }
+  public void increaseDpi() {
+    if ( this.currentDpiPos < (this.dpiSizes.length - 1) ) {
+        ++this.currentDpiPos;
     }
+  }
 
     /**
      * Decrease the image size (dpi).
      */
-    public void decreaseDpi() {
-        if (this.currentDpiPos > 0) {
-            --this.currentDpiPos;
-        }
+  public void decreaseDpi() {
+    if (this.currentDpiPos > 0) {
+        --this.currentDpiPos;
     }
+  }
 
-    public int getImageDpi() {
-        return this.dpiSizes[this.currentDpiPos];
-    }
+  public int getImageDpi() {
+	return this.dpiSizes[this.currentDpiPos];
+  }
 
     /**
      * The source of the graph written in dot language.
      */
-    private StringBuilder graph = new StringBuilder();
+  private StringBuilder graph = new StringBuilder();
 
     /**
      * Constructor: creates a new GraphViz object that will contain
      * a graph.
      */
-    public GraphViz() {
-    }
+  public GraphViz() {
+  }
 
     /**
      * Returns the graph's source description in dot language.
      * @return Source of the graph in dot language.
      */
-    public String getDotSource() {
-        return this.graph.toString();
-    }
+  public String getDotSource() {
+    return this.graph.toString();
+  }
 
     /**
      * Adds a string to the graph's source (without newline).
      */
-    public void add(String line) {
-        this.graph.append(line);
-    }
+  public void add(String line) {
+    this.graph.append(line);
+  }
 
     /**
      * Adds a string to the graph's source (with newline).
      */
-    public void addln(String line) {
-        this.graph.append(line + "\n");
-    }
+  public void addln(String line) {
+    this.graph.append(line + "\n");
+  }
 
     /**
      * Adds a newline to the graph's source.
      */
-    public void addln() {
-        this.graph.append('\n');
-    }
+  public void addln() {
+    this.graph.append('\n');
+  }
 
-    public void clearGraph(){
-        this.graph = new StringBuilder();
-    }
+  public void clearGraph(){
+    this.graph = new StringBuilder();
+  }
 
     /**
      * Returns the graph as an image in binary format.
@@ -162,22 +164,21 @@ public class GraphViz
      * @param type Type of the output image to be produced, e.g.: gif, dot, fig, pdf, ps, svg, png.
      * @return A byte array containing the image of the graph.
      */
-    public byte[] getGraph(String dot_source, String type)
-    {
-        File dot;
-        byte[] img_stream = null;
+  public byte[] getGraph(String dot_source, String type){
+    File dot;
+    byte[] img_stream = null;
 
-        try {
-            dot = writeDotSourceToFile(dot_source);
-            if (dot != null)
-            {
-                img_stream = get_img_stream(dot, type);
-                if (dot.delete() == false) 
-                    System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
-                return img_stream;
-            }
-            return null;
-        } catch (java.io.IOException ioe) { return null; }
+    try {
+        dot = writeDotSourceToFile(dot_source);
+        if (dot != null)
+        {
+            img_stream = get_img_stream(dot, type);
+            if (dot.delete() == false) 
+                System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
+            return img_stream;
+        }
+        return null;
+    } catch (java.io.IOException ioe) { return null; }
     }
 
     /**

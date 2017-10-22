@@ -170,8 +170,8 @@ public class demo {
 		jb2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				getGraph("G://graph//out");
-				expressGraph("G://graph//out");
+				getGraph("out");
+				expressGraph("out");
 			}
 		});
 		
@@ -191,7 +191,7 @@ public class demo {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getPath();
-				expressGraph("G://graph//outshortpath");
+				expressGraph("outshortpath");
 			}
 		});
 		jb6.addActionListener(new ActionListener() {

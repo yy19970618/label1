@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.lang.System;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -272,14 +273,14 @@ public class ProcessText {
 			return "No ¡°"+words2+"¡± in the graph!";
 		}
 		String dotformat = getDotFormat(pathlist);
-		showDirectedGraph(dotformat, "G://graph//outshortpath");
+		showDirectedGraph(dotformat, "outshortpath");
 		return shortpath;
 	}
 	//Ëæ»úÓÎ×ß
 	public static  void writeText()
 	{
 		flag=1;
-		File file = new File("G://graph//randomtext.txt");
+		File file = new File("randomtext.txt");
 		try{
 			file.createNewFile();
 		}catch(IOException e){
