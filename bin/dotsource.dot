@@ -1,0 +1,2 @@
+digraph G {
+new[color=red,style=filled,fillcolor=red];out[color=red];seek[color=red];to[color=red,style=filled,fillcolor=yellow];to->explore[label=3];to->seek[label=3];explore->strange[label=3];strange->new[label=3];new->worlds[label=3];new->life[label=3];new->civilizations[label=3];worlds->to[label=3];seek->out[label=3];out->new[label=3];life->and[label=3];and->new[label=3];civilizations->to[label=1];}
