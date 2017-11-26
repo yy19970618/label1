@@ -1,4 +1,6 @@
-package he;
+package lab1;
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -67,12 +69,12 @@ public class GraphViz
     /**
      * The dir. where temporary files will be created.
      */
-  private static String TEMP_DIR = "G://";
+  private static String TEMP_DIR = "E://";
 
     /**
      * Where is your dot program located? It will be called externally.
      */
-  private static String DOT = "D:\\software\\graphviz\\bin\\dot.exe";
+  private static String DOT = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
 
     /**
      * The image size in dpi. 96 dpi is normal size. Higher values are 10% higher each.
